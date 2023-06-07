@@ -1,0 +1,2 @@
+class EventStoredException(RuntimeError):
+    pass

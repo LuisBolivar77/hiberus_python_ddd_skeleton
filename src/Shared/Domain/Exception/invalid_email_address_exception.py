@@ -1,0 +1,2 @@
+class InvalidEmailAddressException(Exception):
+    pass

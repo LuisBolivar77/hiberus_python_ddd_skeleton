@@ -1,0 +1,2 @@
+class InvalidPermissionsException(Exception):
+    pass
