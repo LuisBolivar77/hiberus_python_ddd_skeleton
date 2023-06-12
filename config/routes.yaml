@@ -1,0 +1,11 @@
+- path: /health_check
+  methods: [GET]
+  class_file: app.Controller.HealthCheck.health_check_controller
+  class_name: HealthCheckController
+  action: health_check
+
+- path: /v1/user/
+  methods: [PUT]
+  class_file: app.Controller.Registration.user_put_controller
+  class_name: UserPutController
+  action: user_put
