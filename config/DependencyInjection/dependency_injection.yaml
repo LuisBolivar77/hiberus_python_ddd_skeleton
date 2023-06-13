@@ -1,0 +1,2 @@
+- class_file: src.Registration.Application.Upsert.user_creator
+  class_name: UserCreator

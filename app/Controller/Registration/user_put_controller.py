@@ -1,10 +1,15 @@
 from flask import request
+from flask.views import MethodView
+from src.Registration.Application.Upsert.user_creator import UserCreator
+from injector import inject
 
 
-class UserPutController:
+class UserPutController(MethodView):
 
-    def user_put(self):
+    @inject
+    def __init__(self, user_creator: UserCreator):
+        self.user_creator = user_creator
+
+    def put(self):
         name = request.get_json()['name']
-        email = request.get_json()['email']
-        password = request.get_json()['password']
         return f"Hello World {name}"

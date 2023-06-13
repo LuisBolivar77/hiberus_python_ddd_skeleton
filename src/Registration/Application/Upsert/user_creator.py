@@ -4,10 +4,12 @@ from src.Shared.Domain.ValueObjects.uuid_value_object import Uuid
 from src.Shared.Domain.ValueObjects.name import Name
 from src.Shared.Domain.ValueObjects.email import Email
 from src.Shared.Domain.ValueObjects.password import Password
+from injector import inject
 
 
 class UserCreator:
 
+    @inject
     def __init__(self, repository: UserRepository):
         self.repository = repository
 

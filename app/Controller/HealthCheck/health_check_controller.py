@@ -1,7 +1,11 @@
 from flask import jsonify
+from flask.views import MethodView
 
 
-class HealthCheckController:
+class HealthCheckController(MethodView):
 
-    def health_check(self):
+    def __init__(self):
+        pass
+
+    def get(self):
         return jsonify({"status": "OK"}), 200

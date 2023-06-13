@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic, Iterable, Iterator, List
+from typing import TypeVar, Generic, Iterator, List
 
 TValue = TypeVar('TValue')
 

@@ -1,4 +1,4 @@
-from string_value_object import StringValueObject as StringVO
+from src.Shared.Domain.ValueObjects.string_value_object import StringValueObject as StringVO
 
 
 class Name(StringVO):
