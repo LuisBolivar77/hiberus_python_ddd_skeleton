@@ -4,7 +4,7 @@ from src.Shared.Domain.ValueObjects.uuid_value_object import Uuid
 from src.Shared.Domain.ValueObjects.name import Name
 from src.Shared.Domain.ValueObjects.email import Email
 from src.Shared.Domain.ValueObjects.password import Password
-from injector import inject
+from injector import inject, Injector
 
 
 class UserCreator:
@@ -19,11 +19,11 @@ class UserCreator:
             name: str,
             email: str,
             password: str
-    ) -> None:
+    ) -> str:
         uuid = Uuid(uuid)
         name = Name(name)
         email = Email(email)
         password = Password(password)
 
         user = User.build(uuid, name, email, password)
-        self.repository.save(user)
+        return self.repository.save(user)

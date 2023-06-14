@@ -4,7 +4,7 @@ from flask.views import MethodView
 
 class HealthCheckController(MethodView):
 
-    def __init__(self):
+    def __init__(self, injector):
         pass
 
     def get(self):

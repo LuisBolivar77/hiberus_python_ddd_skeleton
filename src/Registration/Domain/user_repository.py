@@ -5,7 +5,7 @@ from src.Registration.Domain.User import User
 class UserRepository(ABC):
 
     @abstractmethod
-    def save(self, user: User) -> None:
+    def save(self, user: User) -> str:
         pass
 
     @abstractmethod

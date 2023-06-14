@@ -12,12 +12,14 @@ class MongoUserRepository(UserRepository):
     def __init__(self):
         load_dotenv(find_dotenv())
         mongo_pwd = os.environ.get('MONGO_PWD')
-        mongo_string = os.environ.get('MONGO_STRING').replace('<password>', mongo_pwd)
+        mongo_string = os.environ.get('MONGO_STRING')
+        mongo_string = mongo_string.replace('<password>', mongo_pwd)
         mongo_db = os.environ.get('MONGO_DB')
         self.client = MongoClient(mongo_string)
         self.db = self.client[mongo_db]
 
-    def save(self, user: User) -> None:
+    def save(self, user: User) -> str:
+        return f"hello {user.name().value()}"
         self.db[self.COLLECTION].insert_one({
             '_id': user.uuid().value(),
             'name': user.name().value(),

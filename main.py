@@ -5,9 +5,9 @@ from config import init
 from config.DependencyInjection.app_module import AppModule
 
 app = Flask(__name__)
-Injector([AppModule()])
+injector = Injector([AppModule()])
 
-init(app)
+init(app, injector)
 
 if __name__ == '__main__':
     app.run()
