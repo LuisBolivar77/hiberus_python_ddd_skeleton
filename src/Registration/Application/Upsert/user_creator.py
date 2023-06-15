@@ -19,11 +19,11 @@ class UserCreator:
             name: str,
             email: str,
             password: str
-    ) -> str:
-        uuid = Uuid(uuid)
-        name = Name(name)
-        email = Email(email)
-        password = Password(password)
-
-        user = User.build(uuid, name, email, password)
-        return self.repository.save(user)
+    ) -> None:
+        user = User.build(
+            Uuid(uuid),
+            Name(name),
+            Email(email),
+            Password(password)
+        )
+        self.repository.save(user)

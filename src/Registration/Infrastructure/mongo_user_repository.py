@@ -1,29 +1,19 @@
 from src.Registration.Domain.User import User
 from src.Registration.Domain.user_repository import UserRepository
-from dotenv import load_dotenv, find_dotenv
-from pymongo import MongoClient
-import os
+from src.Shared.Infrastructure.mongo_db_client import MongoDBClient
 
 
 class MongoUserRepository(UserRepository):
-
-    COLLECTION = 'users'
+    COLLECTION = 'User'
 
     def __init__(self):
-        load_dotenv(find_dotenv())
-        mongo_pwd = os.environ.get('MONGO_PWD')
-        mongo_string = os.environ.get('MONGO_STRING')
-        mongo_string = mongo_string.replace('<password>', mongo_pwd)
-        mongo_db = os.environ.get('MONGO_DB')
-        self.client = MongoClient(mongo_string)
-        self.db = self.client[mongo_db]
+        self.db = MongoDBClient.db_client()
 
-    def save(self, user: User) -> str:
-        return f"hello {user.name().value()}"
+    def save(self, user: User) -> None:
         self.db[self.COLLECTION].insert_one({
-            '_id': user.uuid().value(),
-            'name': user.name().value(),
-            'email': user.email().value(),
+            '_id': user.id[0].item,
+            'name': user.name[0].value,
+            'email': user.email[0].value,
             'password': user.password.value()
         })
 

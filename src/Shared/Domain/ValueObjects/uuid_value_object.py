@@ -18,7 +18,7 @@ class Uuid:
         return self(uuid4())
 
     @staticmethod
-    def is_valid(self, value: str) -> bool:
+    def is_valid(value: str) -> bool:
         try:
             UUID(str(value))
             return True
@@ -30,5 +30,4 @@ class Uuid:
             raise ValueError(f"{value} is not a valid UUID")
 
     def __str__(self):
-        Enum
         return str(self.item)
