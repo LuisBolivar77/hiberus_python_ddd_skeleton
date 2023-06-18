@@ -7,10 +7,10 @@ class MongoUserRepository(UserRepository):
     COLLECTION = 'User'
 
     def __init__(self):
-        self.db = MongoDBClient.db_client()
+        self.db = MongoDBClient.db_client()[self.COLLECTION]
 
     def save(self, user: User) -> None:
-        self.db[self.COLLECTION].insert_one({
+        self.db.insert_one({
             '_id': user.id[0].item,
             'name': user.name[0].value,
             'email': user.email[0].value,
@@ -18,7 +18,7 @@ class MongoUserRepository(UserRepository):
         })
 
     def search(self, uuid: str) -> User:
-        pass
+        return self.db.find({'_id': uuid})
 
     def delete(self, uuid: str) -> None:
-        pass
+        self.db.delete_one({'_id': uuid})
