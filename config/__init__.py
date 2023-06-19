@@ -1,7 +1,9 @@
 import yaml
+from dotenv import load_dotenv
 
 
 def init(app):
+    load_dotenv("config/Environments/.env")
     init_routes(app)
 
 
