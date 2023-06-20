@@ -61,4 +61,3 @@ zipp==3.15.0
 mixed~=0.2.1
 pymongo~=4.3.3
 injector~=0.20.1
-flask-injector==0.14.0
